@@ -20,18 +20,22 @@ def Gamess(filename):
     print(out_file)
     
     #Delete files from restart directory
-    restart ="C:\\Users\\Public\\gamess-64\\restart\\"  #this is my restart folder
+    restart ="C:\\Users\\Public\\gamess-64\\restart\\"  #this is my restart folder, change for your own folder
+    os.chdir(path_to_gamess)
     os.chdir(restart)
     #call(["del", "*.dat"], shell=True)
     #call(["del", "*.rst"], shell=True)
     #call(["del", "*.trj"], shell=True)
     call(["del",input_file+ ".*"], shell=True)
 
-    path_to_gamess ="C:\\Users\\Public\\gamess-64\\" #this is my gamess-64 folder
+    path_to_gamess ="C:\\Users\\Public\\gamess-64\\" #this is my gamess-64 folder, change for your own folder
     os.chdir(path_to_gamess)
 
     call(["del", out_file], shell=True)
-    call(["rungms.bat",input_file, "2019.R1.P1.mkl", "1", "0",out_file], shell=True)
+
+    mklCode="here your mkl code"   #enter here your GAMESS mkl   Ej.  2019.S1.H1.mkl
+         
+    call(["rungms.bat",input_file, mklCode, "1", "0",out_file], shell=True)
     f = open(out_file, "r")
     text=f.read()
     if msg in text:

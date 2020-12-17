@@ -33,7 +33,7 @@ def Gamess(filename):
 
     call(["del", out_file], shell=True)
 
-    mklCode="here your mkl code"   #enter here your GAMESS mkl   Ej.  2019.S1.H1.mkl
+    mklCode="here your mkl version"   #enter here your GAMESS mkl   Ej.  2019.S1.H1.mkl
          
     call(["rungms.bat",input_file, mklCode, "1", "0",out_file], shell=True)
     f = open(out_file, "r")
